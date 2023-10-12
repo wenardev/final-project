@@ -5,7 +5,7 @@ const { Types } = require("mongoose");
 const Orderitem = require('../order-item/model');
 
 const store = async(req, res, next) => {
-
+    
     try{
         let {delivery_fee, delivery_address} = req.body;
         let items = await CartItem.find({user: req.user._id}).populate('product');
@@ -25,7 +25,7 @@ const store = async(req, res, next) => {
                 kabupaten: address.kabupaten,
                 kecamatan: address.kecamatan,
                 kelurahan: address.kelurahan,
-                detail: address.detail,
+                name: address.name,
             },
             user: req.user._id
         });
@@ -44,7 +44,7 @@ const store = async(req, res, next) => {
         await CartItem.deleteMany({user: req.user._id});
         return res.json(order); 
     } catch(err){
-
+    
         if(err && err.name == 'ValidationError'){
             return res.json({
                 error: 1,
@@ -52,14 +52,14 @@ const store = async(req, res, next) => {
                 fields: err.errors
             });
         }
-
+    
         next(err);
 
     }
 }
 
 const index = async(req, res, next) => {
-
+    
     try {
         let {skip = 0, limit = 10} = req.query;
         let count = await Order.find({user: req.user._id}).countDocuments();
@@ -81,8 +81,8 @@ const index = async(req, res, next) => {
                 message: err.message,
                 fields: err.errors,
             });
-        }
-
+        } 
+        
         next(err);
 
     }

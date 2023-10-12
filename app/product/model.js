@@ -5,8 +5,8 @@ const productSchema = Schema({
 
     name: {
         type: String,
-        minlength: [3, 'Panjang nama makanan minimal 3 karakter'],
-        require: [true, 'Nama makanan harus diisi']
+        minlength: [3, 'Panjang nama minimal 3 karakter'],
+        require: [true, 'Nama harus diisi']
     },
 
     description: {

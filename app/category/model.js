@@ -4,7 +4,7 @@ const {model, Schema} = mongoose;
 let categorySchema = Schema({
     name: {
         type: String,
-        minlength: [3, 'Panjang nama kategory minimal 3 karakter'],
+        minlength: [2, 'Panjang nama kategory minimal 2 karakter'],
         maxlength: [20, 'Panjang nama kategory maksimal 20 karakter'],
         required: [true, 'Panjang kategory harus diisi']
     }

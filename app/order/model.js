@@ -20,7 +20,7 @@ const orderSchema = Schema({
         kabupaten: { type: String, required: [true, 'kabupaten harus diisi']},
         kecamatan: { type: String, required: [true, 'kecamatan harus diisi']},
         kelurahan: { type: String, required: [true, 'kelurahan harus diisi']},
-        detail: { type: String },
+        name: { type: String, required: [true, 'detail harus diisi'] },
     },
 
     user: {

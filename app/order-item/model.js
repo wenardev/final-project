@@ -6,7 +6,7 @@ const orderItemSchema = Schema({
     name:{
         type: String,
         minlength: [5, 'Panjang nama minimanl 50 karakter'],
-        required: [true, 'name must be filled']
+        required: [true, 'Nama harus diisi']
     },
 
     price: {

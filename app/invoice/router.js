@@ -1,10 +1,7 @@
-const express = require('express');
-const router = express.Router();
-const invoiceController = require('./controller'); // Pastikan controller telah didefinisikan dan eksport
+const router = require('express').Router();
+const { police_check } = require('../../middlewares');
+const invoiceController = require('./controller');
 
-router.get('/invoice', (req, res) => {
-    // Fungsi callback untuk route ini
-    invoiceController.index(req, res); // Panggil fungsi index dari controller
-});
+router.get('/invoices/:order_id', police_check('read', 'Invoice'), invoiceController.show);
 
 module.exports = router;
